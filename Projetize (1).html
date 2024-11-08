@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Responsivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+    <style>
+     /* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+img, video{
+  width: 100%;
+}
+@media screen and (max-width: 480px){
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    
+}
+
+.menu-icon {
+    font-size: 2rem;
+}
+
+.logo {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-button {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Menu de tela cheia */
+.overlay-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay-menu.active {
+    transform: translateY(0); 
+}
+
+.overlay-menu .overlay-nav a {
+  display: flex;
+  flex-direction: column;
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 15px 0;
+    font-size: 3rem;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.logo {
+  font-family: "Anton SC", sans-serif;
+  font-size: 2.2rem;
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 1);
+  font-style: normal;
+  margin-left: -3%;
+  
+}
+.sectiondoInicio{
+  background-color: #171d28;
+  padding-bottom: 3%;
+  
+}
+
+.inicio h1{
+  font-size: 2.2rem;
+  font-family: Poppins;
+}
+.divdotitulodoinicio{
+  
+  width: 98%;
+  padding-left: 3%;
+  color: white;
+}
+.divdoparagrafodoinicio span{
+  background-color: #048a98;
+  padding: 0.1%;
+  
+}
+.divdoparagrafodoinicio{
+  width: 90%;
+  color: white;
+  margin-left: 5%;
+  margin-top: 3%;
+  font-size: 0.95rem;
+  
+}
+.divdobotaodeinicio{
+  width: 45%;
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+  
+}
+
+button {
+  all: unset;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  height: 3.5rem;
+  align-items: center;
+  border-radius: 9999px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-family: Segoe UI;
+  font-size: 1.2rem;
+  font-weight: 640;
+  color: #fafaf6;
+  letter-spacing: -0.06em;
+}
+
+.button-item {
+  background-color: transparent;
+  color: #1d1d1f;
+}
+
+.button-item .button-bg {
+  border-color: black;
+  background-color: #9cfaf7;
+}
+
+.button-inner,
+.button-inner-hover,
+.button-inner-static {
+  pointer-events: none;
+  display: block;
+}
+
+.button-inner {
+  position: relative;
+}
+
+.button-inner-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(70%);
+}
+
+.button-bg {
+  overflow: hidden;
+  border-radius: 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transition: transform 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.button-bg,
+.button-bg-layer,
+.button-bg-layers {
+  display: block;
+}
+
+.button-bg-layers {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: -60%;
+  aspect-ratio: 1 / 1;
+  width: max(200%, 10rem);
+}
+
+.button-bg-layer {
+  border-radius: 9999px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+}
+
+.button-bg-layer.-purple {
+  background-color: rgba(163, 116, 255);
+}
+
+.button-bg-layer.-turquoise {
+  background-color: #027c78
+}
+
+.button-bg-layer.-yellow {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 208, 116, var(--tw-bg-opacity));
+}
+
+.button:hover .button-inner-static {
+  opacity: 0;
+  transform: translateY(-70%);
+  transition:
+    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.3s linear;
+}
+
+.button:hover .button-inner-hover {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.button:hover .button-bg-layer {
+  transition:
+    transform 1.3s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.3s linear;
+}
+
+.button:hover .button-bg-layer-1 {
+  transform: scale(1);
+}
+
+.button:hover .button-bg-layer-2 {
+  transition-delay: 0.1s;
+  transform: scale(1);
+}
+
+.button:hover .button-bg-layer-3 {
+  transition-delay: 0.2s;
+  transform: scale(1);
+}
+
+
+
+
+
+
+.carousel-container {
+      overflow: hidden;
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      margin-top: 5%;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      height: 85%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+      border: solid 2px black;
+      border-radius: 2%;
+    }
+    
+
+   .sectiondoSobrenos{
+     background-color: black;
+     
+   } 
+   .sectiondoSobrenos h1{
+     color: white;
+     text-align: start;
+     font-size: 2.5rem;
+     font-family: Poppins;
+     padding-top: 5%;
+     
+   }
+   .sectiondoSobrenos p{
+     color: white;
+     padding: 1%;
+     font-size: 0.95rem;
+     text-indent: 5%;
+     text-align: start;
+   }
+   .divdoparagrafodosobrenos{
+     padding: 4%;
+   }
+
+.sectiondoSobrenos img {
+  width: 95%;
+}
+.divdotirmtulodosobre{
+  
+  margin-left: 3%;
+}
+.divdoparagrafodosobrenos span{
+  background-color: #048a98;
+  padding: 0.1%;
+}
+
+.sectiondosservicos{
+     background-color: black;
+     
+   } 
+   .sectiondosservicos h1{
+     color: white;
+     text-align: start;
+     font-size: 2.5rem;
+     font-family: Poppins;
+     padding-top: 5%;
+     
+   }
+   .sectiondosservicos p{
+     color: white;
+     padding: 1%;
+     font-size: 0.95rem;
+     text-indent: 5%;
+     text-align: start;
+   }
+   .divdotituloservicos{
+     padding: 4%;
+   }
+
+.iconarte {
+  width: 35%;
+  margin: auto;
+  margin-right: 10%;
+}
+.divprajuntartextoeimagemnoservicos{
+  display: flex;
+  justify-content: space-around;
+}
+
+hr{
+  color: white;
+  width: 84%;
+}
+
+
+#titulodofinaldasectiondeservicos{
+  text-align: center;
+}
+
+.hrdasectiondoinicio{
+  margin-top: 3%;
+}
+
+.sectiondecontato{
+     background-color: black;
+     
+   } 
+   .sectiondecontato h1{
+     color: white;
+     text-align: center;
+     font-size: 2.5rem;
+     font-family: Poppins;
+     padding-top: 5%;
+     
+   }
+   .sectiondecontato span{
+     color: #bdfdc5;
+   }
+     
+   .sectiondecontato p{
+     color: white;
+     padding: 1%;
+     font-size: 0.95rem;
+     text-indent: 5%;
+     text-align: start;
+   }
+   .divdotituloservicos{
+     padding: 4%;
+   }
+ 
+ .original-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 8px;
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  border-bottom: 4px solid #179e43;
+  transition: 0.3s;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  background-color: #19d256;
+}
+
+.original-button:hover {
+  box-shadow: 0 0 rgba(0, 0, 0, 0.4);
+  border-bottom-width: 2px;
+  transform: translateY(2px);
+}
+ 
+ .divpracentralizarobotaodozap{
+   display: flex;
+   justify-content: center;
+   margin-top: 8%;
+ }
+   
+   
+   
+}
+
+/* Responsividade para dispositivos menores */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+} 
+    </style>
+</head> 
+<body>
+    <header class="header">
+        <div class="menu-icon">🖌️</div>
+        <div class="logo">PROJETIZE</div>
+        <nav class="nav-links">
+            <a href="#home">Início</a>
+            <a href="#sobre">Sobre nós</a>
+            <a href="#servicos">Produtos</a>
+            <a href="#sectiondecontato">Contato</a>
+        </nav>
+        <div class="menu-button" onclick="toggleMenu()">☰</div>
+    </header>
+    <div class="overlay-menu" id="overlayMenu">
+        <div class="close-button" onclick="toggleMenu()">✖</div>
+        <nav class="overlay-nav">
+            <a href="#sectiondoInicio">Home</a>
+            <a href="#sectiondoSobrenos">Sobre</a>
+            <a href="#sectiondosservicos">Serviços</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </div>
+    
+    <section class="sectiondoInicio" id="sectiondoInicio">
+      <img src="Design sem nome_20241108_021359_0000.png">
+      <div class="inicio">
+        <div class="divdotitulodoinicio">
+          <h1>A sua imaginação é nossa matéria prima!</h1>
+        </div>
+        <div class="divdoparagrafodoinicio">
+    <p><span>A Projetize é mais do que uma empresa de design gráfico;</span> é um espaço onde suas ideias se transformam em realidade, explorando cada detalhe para refletir o que você imaginou.</p>
+        </div>
+        <div class="divdobotaodeinicio">
+          
+<button class="button button-item">
+  <span class="button-bg">
+    <span class="button-bg-layers">
+      <span class="button-bg-layer button-bg-layer-1 -purple"></span>
+      <span class="button-bg-layer button-bg-layer-2 -turquoise"></span>
+      <span class="button-bg-layer button-bg-layer-3 -yellow"></span>
+    </span>
+  </span>
+  <span class="button-inner">
+    <span class="button-inner-static">Peça agora!</span>
+    <span class="button-inner-hover">Peça agora!</span>
+  </span>
+</button>
+
+        </div>
+    
+        
+      </div>
+    
+    <hr class="hrdasectiondoinicio">
+    </section>
+    
+    <section class="sectiondoSobrenos" id="sectiondoSobrenos">
+      <img src="images.jpeg">
+      <div class="divdotirmtulodosobre">
+        
+              <h1>Quem somos nós?</h1>
+      </div>
+      <div class="divdoparagrafodosobrenos">
+        
+  <p><span>A Projetize é uma empresa focada em design gráfico e na criação de produtos personalizados</span>, destacando-se pela capacidade de transformar a imaginação dos clientes em realidade.</p>
+          
+          <p>Com uma linha de produtos que inclui <span>camisas, copos, itens artísticos e outros acessórios personalizados</span>, a Projetize oferece não apenas artigos esteticamente agradáveis, mas também únicos, feitos para atender às preferências e ideias individuais dos clientes.</p> 
+          <p><span>A empresa busca entregar produtos de alta qualidade e visual impactante</span>, com um compromisso em inovar e captar a essência da identidade visual que cada cliente deseja.
+</p>
+
+        
+      </div>
+       <hr>   
+    
+    </section>
+    
+    <section class="sectiondosservicos" id="sectiondosservicos">
+        
+        <div class="divprajuntartextoeimagemnoservicos">
+           <div class="divdotituloservicos">
+        
+              <h1>Conheça nossos Produtos</h1>
+      </div>
+      <img src="Iconarte.png" class="iconarte">
+        </div>   
+      
+     
+
+     <div class="carousel-container">
+  <div class="carousel" id="carousel">
+    <div class="carousel-item">
+      <img src="canva1.png">
+    </div>
+    <div class="carousel-item">
+      <img src="canva2.png">
+    </div>
+    <div class="carousel-item">
+      <img src="canva3.png">
+    </div>
+  </div>
+</div>   
+<h1 id="titulodofinaldasectiondeservicos">E muito mais!</h1>
+    
+    <hr>
+    </section>
+    
+    
+    <section class="sectiondecontato" id="sectiondecontato">
+        
+       
+           <div class="divdotitulocontato">
+        
+              <h1>Contate-nos no <span>Whatsapp!</span></h1>
+      </div>
+      
+     <div class="divpracentralizarobotaodozap">
+       <a href="https://wa.me/5521976822355?text=Olá%20gostaria%20de%20saber%20mais%20informações" target="_blank" class="original-button">📞 Whatsapp</a>
+     </div> 
+
+    </section>
+   
+
+   
+
+
+
+
+
+    <script>
+      function toggleMenu() {
+    const overlayMenu = document.getElementById('overlayMenu');
+    overlayMenu.classList.toggle('active');
+}
+
+const carrossel = document.getElementById('carousel');
+  const itens = document.querySelectorAll('.carousel-item');
+  let toqueInicialX = 0;
+  let posicaoAtual = 0;
+  let posicaoAnterior = 0;
+  let indiceAtual = 0;
+  let deslizando = false;
+
+  // Início do toque
+  carrossel.addEventListener('touchstart', (evento) => {
+    toqueInicialX = evento.touches[0].clientX;
+    deslizando = true;
+    carrossel.style.transition = 'none'; // Remove a transição enquanto o usuário arrasta
+  });
+
+  // Movimento do toque
+  carrossel.addEventListener('touchmove', (evento) => {
+    if (!deslizando) return;
+    const toqueAtualX = evento.touches[0].clientX;
+    const deltaX = toqueAtualX - toqueInicialX; // Calcula o quanto o dedo se moveu
+    posicaoAtual = posicaoAnterior + deltaX;
+    carrossel.style.transform = `translateX(${posicaoAtual}px)`; // Move o carrossel conforme o arraste
+  });
+
+  // Fim do toque
+  carrossel.addEventListener('touchend', () => {
+    deslizando = false;
+    const limiteDeslizamento = 100; // Distância mínima para considerar um deslize válido
+    const deslizado = posicaoAtual - posicaoAnterior;
+
+    // Verifica se o deslize foi suficiente para mudar o slide
+    if (deslizado < -limiteDeslizamento && indiceAtual < itens.length - 1) {
+      indiceAtual++; // Avança para o próximo slide
+    } else if (deslizado > limiteDeslizamento && indiceAtual > 0) {
+      indiceAtual--; // Retorna ao slide anterior
+    }
+
+    // Atualiza a posição do carrossel para o slide correto
+    atualizarPosicaoCarrossel();
+  });
+
+  // Atualiza a posição do carrossel com uma transição suave
+  function atualizarPosicaoCarrossel() {
+    posicaoAnterior = -indiceAtual * itens[0].clientWidth; // Calcula a posição do slide atual
+    carrossel.style.transition = 'transform 0.3s ease'; // Adiciona transição para o novo slide
+    carrossel.style.transform = `translateX(${posicaoAnterior}px)`; // Posiciona o slide correto
+  }
+
+  // Ajusta o carrossel ao redimensionar a tela
+  window.addEventListener('resize', atualizarPosicaoCarrossel);
+
+    </script>
+</body>
+</html>
